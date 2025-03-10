@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MVVM.Views.LoginPage"
+             Title="LoginPage">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="Red" Offset="0"/>
+                <GradientStop Color="Black" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <VerticalStackLayout Spacing="15">
+
+            
+
+            <Image Source="ferlogo.png"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="200"
+                   HeightRequest="200"/>
+
+
+            <Border WidthRequest="250"
+                    Stroke="DarkRed"
+                    StrokeThickness="5"
+                    Padding="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+
+                <Entry WidthRequest="250"
+                       Placeholder="Email address"
+                       />
+            </Border>
+
+            <Border WidthRequest="250"
+                    Stroke="DarkRed"
+                    StrokeThickness="5"
+                    Padding="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+
+                <Entry WidthRequest="250"
+                       Placeholder="Password"/>
+            </Border>
+
+            <HorizontalStackLayout Spacing="10"
+                                   HorizontalOptions="Center">
+                
+                <Label 
+                           Text="Don't have an account?"
+                       />
+                <Label
+                           Text="Create one"
+                       Grid.Column="1"/>
+          
+            </HorizontalStackLayout>
+
+            <Button/>
+
+
+
+            <Image
+                   Source="fercarnobg.png"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="300"
+                   HeightRequest="300"/>
+
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
