@@ -5,60 +5,91 @@
              Title="LoginPage">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="Red" Offset="0"/>
+                <GradientStop Color="#A80000" Offset="0.5"/>
                 <GradientStop Color="Black" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <VerticalStackLayout Spacing="15">
+        <VerticalStackLayout Spacing="15"
+                             Padding="50"
+                             >
 
-            
 
-            <Image Source="ferlogo.png"
+
+            <Image Source="ferarrilogo.png"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   WidthRequest="200"
-                   HeightRequest="200"/>
+                   WidthRequest="150"
+                   HeightRequest="150"/>
 
 
-            <Border WidthRequest="250"
-                    Stroke="DarkRed"
-                    StrokeThickness="5"
+            <Border WidthRequest="275"
+                    Stroke="#790101"
+                    StrokeThickness="4"
                     Padding="5">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="20"/>
+                    <RoundRectangle CornerRadius="50"/>
                 </Border.StrokeShape>
 
                 <Entry WidthRequest="250"
                        Placeholder="Email address"
-                       />
+                       PlaceholderColor="LightGray"
+                       FontFamily="MontserratRegular"/>
             </Border>
 
-            <Border WidthRequest="250"
-                    Stroke="DarkRed"
-                    StrokeThickness="5"
+            <Border WidthRequest="275"
+                    Stroke="#790101"
+                    StrokeThickness="4"
                     Padding="5">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="20"/>
+                    <RoundRectangle CornerRadius="50"/>
                 </Border.StrokeShape>
 
                 <Entry WidthRequest="250"
-                       Placeholder="Password"/>
+                       Placeholder="Password"
+                       FontFamily="MontserratRegular"
+                       PlaceholderColor="LightGray"/>
             </Border>
 
             <HorizontalStackLayout Spacing="10"
                                    HorizontalOptions="Center">
-                
+
                 <Label 
-                           Text="Don't have an account?"
-                       />
+                        Text="Don't have an account?"
+                    FontFamily="MontserratRegular"
+                        TextColor="#444444"/>
                 <Label
-                           Text="Create one"
-                       Grid.Column="1"/>
-          
+                        Text="Create one"
+                    FontFamily="MontserratSemiBold"
+                        Grid.Column="1"/>
+                
+
             </HorizontalStackLayout>
 
-            <Button/>
+            <Grid WidthRequest="160"
+                HeightRequest="65">
+                <!-- Shadow Layer -->
+                <Frame WidthRequest="160"
+                    HeightRequest="65"
+                    BackgroundColor="Black"
+                    Opacity="0.2"
+                    CornerRadius="100"
+                    IsClippedToBounds="True"/>
+
+                <!-- Button Layer -->
+                <Button WidthRequest="150"
+                        HeightRequest="55"
+                        Text="Login"
+                        FontFamily="MontserratSemiBold"
+                        BackgroundColor="#790101"
+                        CornerRadius="100"
+                        FontSize="25"
+                        FontAttributes="Bold"
+                        BorderColor="Transparent"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+            </Grid>
 
 
 
@@ -66,8 +97,7 @@
                    Source="fercarnobg.png"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   WidthRequest="300"
-                   HeightRequest="300"/>
+                   WidthRequest="500"/>
 
 
         </VerticalStackLayout>
