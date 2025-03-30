@@ -14,14 +14,17 @@ using MauiApp1.MVVM.Views;
 
 namespace MauiApp1.MVVM.ViewModels
 {
-    public class Authenthication : INotifyPropertyChanged
+    public class Authentication : INotifyPropertyChanged
     {
-        private string _password;
-        private string _confirmPassword;
-        private string _errorMessage;
-        private string _username;
+        private readonly ObservableCollection<User> _users = new()
+    {
+        new User("admin", "password"), // Pre-populated users
+        new User("admin123", "password123")
+    };
 
-        [Required]
+        private string _username;
+        private string _password;
+
         public string Username
         {
             get => _username;
@@ -31,7 +34,7 @@ namespace MauiApp1.MVVM.ViewModels
                 OnPropertyChanged();
             }
         }
-        [Required]
+
         public string Password
         {
             get => _password;
@@ -41,104 +44,62 @@ namespace MauiApp1.MVVM.ViewModels
                 OnPropertyChanged();
             }
         }
-        [Required, Compare(nameof(Password))]
-        public string ConfirmPassword
-        {
-            get => _confirmPassword;
-            set
-            {
-                _confirmPassword = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ErrorMessage
-        {
-            get => _errorMessage;
-            set
-            {
-                _errorMessage = value;
-                OnPropertyChanged();
-            }
-        }
-
 
         public ICommand NavigateToHomePageCommand { get; }
         public ICommand RegisterCommand { get; }
 
-
-
-
-        private readonly UserService ?_userService;
-        public Authenthication(UserService userService)
-        { 
-            _userService = userService;
+        public Authentication()
+        {
             NavigateToHomePageCommand = new Command(OnNavigateToHomePage);
             RegisterCommand = new Command(OnRegister);
+        }
 
+        private bool ValidateUser(string username, string password)
+        {
+            return _users.Any(u =>
+                u.Username.Trim().Equals(username.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                u.Password.Trim() == password.Trim());
+        }
+
+        private async void OnNavigateToHomePage()
+        {
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Username and password are required!", "OK");
+                return;
+            }
+
+            if (!ValidateUser(Username, Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Invalid username or password!", "OK");
+                return;
+            }
+
+            await App.Current.MainPage.Navigation.PushAsync(new HomePage());
         }
 
         private async void OnRegister()
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password) || string.IsNullOrWhiteSpace(ConfirmPassword))
-                {
-                    throw new ArgumentNullException("All fields are required.");
-                }
-
-                if (Password != ConfirmPassword)
-                {
-                    ErrorMessage = "Passwords do not match!";
-                    await App.Current.MainPage.DisplayAlert("Error", ErrorMessage, "OK");
-                    return;
-                }
-
-                _userService?.Users.Add(new User(Username, Password));
-                OnPropertyChanged();
-                ErrorMessage = "User Added";
-                await App.Current.MainPage.DisplayAlert("Success", ErrorMessage, "OK");
-
-                App.Current.MainPage = new LoginPage(_userService);
-            }
-            catch (ArgumentNullException ex)
-            {
-                ErrorMessage = ex.Message;
-                await App.Current.MainPage.DisplayAlert("Error", ErrorMessage, "OK");
-            }
-            catch (Exception ex)
-            {
-                ErrorMessage = ex.Message;
-                await App.Current.MainPage.DisplayAlert("Error", ErrorMessage, "OK");
-            }
-
-
-        }
-
-       
-        private async void OnNavigateToHomePage()
-        {
-
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
-                ErrorMessage = "Username and password are required!";
-                await App.Current.MainPage.DisplayAlert("Error", ErrorMessage, "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "All fields are required!", "OK");
                 return;
             }
 
-            if (!_userService.ValidateUser(Username, Password)) // Trim whitespace [[5]]
+            if (_users.Any(u => u.Username.Equals(Username, StringComparison.OrdinalIgnoreCase)))
             {
-                ErrorMessage = "Invalid username or password!";
-                await App.Current.MainPage.DisplayAlert("Error", ErrorMessage, "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "Username already exists!", "OK");
                 return;
             }
 
-            App.Current.MainPage = new HomePage(_userService);
+            _users.Add(new User(Username, Password));
+            await App.Current.MainPage.DisplayAlert("Success", "User registered successfully!", "OK");
 
+            await App.Current.MainPage.Navigation.PopAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

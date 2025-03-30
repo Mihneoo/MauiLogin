@@ -27,9 +27,9 @@ namespace MauiApp1
 #endif
             builder.Services.AddTransient<RegisterPage>();
             builder.Services.AddTransient<HomePage>();
-            builder.Services.AddTransient<LoginPage>(); 
+            builder.Services.AddSingleton<LoginPage>(); 
 
-            builder.Services.AddTransient<Authenthication>();
+            builder.Services.AddSingleton<Authentication>();
             builder.Services.AddSingleton<UserService>(); 
 
             return builder.Build();

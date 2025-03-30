@@ -109,7 +109,9 @@
                    Source="fercarnobg.png"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   WidthRequest="500"/>
+                   WidthRequest="100"
+                Background="Transparent"
+                BackgroundColor="Transparent"/>
 
 
         </VerticalStackLayout>

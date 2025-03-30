@@ -7,10 +7,10 @@ namespace MauiApp1.MVVM.Views;
 
 public partial class RegisterPage : ContentPage
 {
-	public RegisterPage(UserService userService)
+	public RegisterPage()
 	{
 		InitializeComponent();
-		BindingContext = new Authenthication(userService);
+		BindingContext = new Authentication();
 
 
     }

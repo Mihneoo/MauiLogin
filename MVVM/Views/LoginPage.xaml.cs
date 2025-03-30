@@ -9,16 +9,16 @@ public partial class LoginPage : ContentPage
 {
 
     
-    public LoginPage(UserService ?userService)
+    public LoginPage()
 	{
 		InitializeComponent();
-		BindingContext = new Authenthication(userService);
+		BindingContext = new Authentication();
     }
 
     private readonly UserService _userService;
     private async void RegisterPageButton_Clicked(object sender, EventArgs e)
     {
-        App.Current.MainPage = new RegisterPage(_userService);
+        await Navigation.PushAsync(new RegisterPage());
     }
 
 }
