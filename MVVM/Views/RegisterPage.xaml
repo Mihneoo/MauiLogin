@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MVVM.Views.RegisterPage"
+             Title="">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="Red" Offset="0"/>
+                <GradientStop Color="#A80000" Offset="0.5"/>
+                <GradientStop Color="Black" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <VerticalStackLayout Spacing="15"
+                             Margin="15">
+
+            <Image Source="ferarrilogo.png"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    WidthRequest="150"
+                    HeightRequest="150"/>
+
+            <Border WidthRequest="275"
+                    Stroke="#790101"
+                    StrokeThickness="4"
+                    Padding="5">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="50"/>
+                </Border.StrokeShape>
+
+                <Entry WidthRequest="250"
+                       Placeholder="Username"
+                       Text="{Binding Username}"
+                       PlaceholderColor="LightGray"
+                       FontFamily="MontserratRegular"/>
+            </Border>
+            
+            
+                <Border WidthRequest="275"
+                    Stroke="#790101"
+                    StrokeThickness="4"
+                    Padding="5">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+
+                    <Entry WidthRequest="250"
+                       Placeholder="Password"
+                        Text="{Binding Password, Mode=TwoWay}"
+                       x:Name="Password"       
+                       IsPassword="True"
+                       PlaceholderColor="LightGray"
+                       FontFamily="MontserratRegular"/>
+                </Border>
+
+               
+           
+            
+                <Border WidthRequest="275"
+                        Stroke="#790101"
+                        StrokeThickness="4"
+                        Padding="5">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+
+                    <Entry WidthRequest="250"
+                            Placeholder="Confirm Password"
+                            Text="{Binding ConfirmPassword, Mode=TwoWay}"
+                            x:Name="ConfirmPassword"
+                            IsPassword="True"
+                            PlaceholderColor="LightGray"
+                            FontFamily="MontserratRegular"/>
+                </Border>
+
+            <Grid WidthRequest="160"
+                 HeightRequest="65">
+                <!-- Shadow Layer -->
+                <Frame WidthRequest="160"
+                    HeightRequest="65"
+                    BackgroundColor="Black"
+                    Opacity="0.2"
+                    CornerRadius="50"
+                    IsClippedToBounds="True"/>
+
+                <!-- Button Layer -->
+                <Button WidthRequest="150"
+                    HeightRequest="55"
+                    Text="Register"                    
+                    Command="{Binding RegisterCommand}"
+                    x:Name="RegisteredUser"
+                    TextColor="White"
+                    FontFamily="MontserratSemiBold"
+                    BackgroundColor="#790101"
+                    CornerRadius="50"
+                    FontSize="25"
+                    FontAttributes="Bold"
+                    BorderColor="Transparent"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <Image
+                   Source="fercarnobg.png"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="500"/>
+
+
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

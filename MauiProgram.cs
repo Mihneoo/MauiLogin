@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiApp1.MVVM.Services;
+using MauiApp1.MVVM.ViewModels;
+using MauiApp1.MVVM.Views;
+using Microsoft.Extensions.Logging;
 
 namespace MauiApp1
 {
@@ -22,6 +25,12 @@ namespace MauiApp1
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddTransient<RegisterPage>();
+            builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<LoginPage>(); 
+
+            builder.Services.AddTransient<Authenthication>();
+            builder.Services.AddSingleton<UserService>(); 
 
             return builder.Build();
         }
