@@ -25,11 +25,12 @@ namespace MauiApp1
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddTransient<RegisterPage>();
-            builder.Services.AddTransient<HomePage>();
-            builder.Services.AddTransient<LoginPage>(); 
+            builder.Services.AddSingleton<RegisterPage>();
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<LoginPage>(); 
+            builder.Services.AddSingleton<App>(); 
 
-            builder.Services.AddTransient<Authenthication>();
+            builder.Services.AddSingleton<Authenthication>();
             builder.Services.AddSingleton<UserService>(); 
 
             return builder.Build();

@@ -8,17 +8,18 @@ using MauiApp1.MVVM.Services;
 public partial class LoginPage : ContentPage
 {
 
-    private UserService _userService;
+    public UserService _userService;
     
     public LoginPage(UserService ?userService)
 	{
 		InitializeComponent();
+        _userService = userService;
 		BindingContext = new Authenthication(userService);
     }
 
     private async void RegisterPageButton_Clicked(object sender, EventArgs e)
     {
-        App.Current.MainPage = new RegisterPage(_userService);
+        await App.Current.MainPage.Navigation.PushAsync(new RegisterPage(_userService));
     }
 
 }

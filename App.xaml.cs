@@ -6,11 +6,11 @@ namespace MauiApp1
 {
     public partial class App : Application
     {
-        public App(UserService userService)
+        public App(UserService? userService)
         {
             InitializeComponent();
 
-            MainPage = new LoginPage(userService);
+            MainPage = new NavigationPage(new LoginPage(userService));
         }
     }
 }

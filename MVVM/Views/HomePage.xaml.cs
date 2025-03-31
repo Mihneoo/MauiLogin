@@ -4,14 +4,19 @@ namespace MauiApp1.MVVM.Views;
 
 public partial class HomePage : ContentPage
 {
+    private readonly UserService _userService;
 	public HomePage(UserService userService)
 	{
 		InitializeComponent();
+		_userService = userService;
 	}
 
-    private readonly UserService _userService;
-    private void LogoutButton_Clicked(object sender, EventArgs e)
+
+	
+    private async void LogoutButton_Clicked(object sender, EventArgs e)
     {
-		App.Current.MainPage = new LoginPage(_userService);
+		App.Current.MainPage = new NavigationPage(new LoginPage(_userService));
     }
 }
+
+

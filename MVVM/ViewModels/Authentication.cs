@@ -16,10 +16,10 @@ namespace MauiApp1.MVVM.ViewModels
 {
     public class Authenthication : INotifyPropertyChanged
     {
-        private string _password;
-        private string _confirmPassword;
-        private string _errorMessage;
-        private string _username;
+        private string _password = string.Empty;
+        private string _confirmPassword = string.Empty;
+        private string _errorMessage = string.Empty;
+        private string _username = string.Empty;
 
         [Required]
         public string Username
@@ -95,11 +95,10 @@ namespace MauiApp1.MVVM.ViewModels
                 }
 
                 _userService?.Users.Add(new User(Username, Password));
-                OnPropertyChanged();
                 ErrorMessage = "User Added";
                 await App.Current.MainPage.DisplayAlert("Success", ErrorMessage, "OK");
 
-                App.Current.MainPage = new LoginPage(_userService);
+                await App.Current.MainPage.Navigation.PopAsync();
             }
             catch (ArgumentNullException ex)
             {
