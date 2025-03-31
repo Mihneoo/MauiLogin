@@ -10,16 +10,16 @@ namespace MauiApp1.MVVM.Services
 {
     public class UserService
     {
-        public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>()
-        {
-            new User("admin", "password"),// Pre-populate if needed
-            new User("admin123", "password123") // Pre-populate if needed
-        };
+        public ObservableCollection<User> Users { get; set; }
 
         public UserService() 
         
         {
-            Users = new ObservableCollection<User>();
+            Users = new ObservableCollection<User>()
+                 {
+            new User("admin", "password"),// Pre-populate if needed
+            new User("admin123", "password123") // Pre-populate if needed
+        };
         }
 
         public bool ValidateUser(string username, string password)

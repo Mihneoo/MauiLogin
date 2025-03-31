@@ -69,7 +69,7 @@ namespace MauiApp1.MVVM.ViewModels
 
 
 
-        private readonly UserService ?_userService;
+        public UserService _userService;
         public Authenthication(UserService userService)
         { 
             _userService = userService;
