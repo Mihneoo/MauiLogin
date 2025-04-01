@@ -101,10 +101,12 @@
             </Grid>
 
             <Image
-                   Source="fercarnobg.png"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   WidthRequest="500"/>
+       Source="ferarrilaferarri.png"
+       VerticalOptions="Center"
+       HorizontalOptions="Center"
+    Background="Transparent"
+    BackgroundColor="Transparent"
+       WidthRequest="300"/>
 
 
         </VerticalStackLayout>

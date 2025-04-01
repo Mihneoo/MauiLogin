@@ -49,6 +49,7 @@
 
                 <Entry WidthRequest="250"
                        Placeholder="Password"
+                       IsPassword="True"
                        Text="{Binding Password}"
                        FontFamily="MontserratRegular"
                        PlaceholderColor="LightGray"/>
@@ -61,12 +62,12 @@
                         Text="Don't have an account?"
                         FontFamily="MontserratRegular"
                     VerticalOptions="Center"
-                        TextColor="#444444"/>
+                        TextColor="AliceBlue"/>
                 <Button
                     x:Name="RegisterPageButton"
                         Text="Create one"
-                    Background="Transparent"
-                    HeightRequest="10"
+                    Background="Red"
+                    HeightRequest="40"
                     Clicked="RegisterPageButton_Clicked"
                         FontFamily="MontserratSemiBold"
                         Grid.Column="1" />
@@ -98,7 +99,7 @@
                         CornerRadius="50"
                         FontSize="25"
                         FontAttributes="Bold"
-                        BorderColor="Transparent"
+                    BorderColor="Transparent"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
             </Grid>
@@ -106,12 +107,17 @@
 
 
             <Image
-                   Source="fercarnobg.png"
+                   Source="ferarrilaferarri.png"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   WidthRequest="500"/>
+                Background="Transparent"
+                BackgroundColor="Transparent"
+                   WidthRequest="300"/>
 
 
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
+    
+    
+    
